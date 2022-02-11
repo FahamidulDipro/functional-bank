@@ -1,9 +1,7 @@
 const depositBtn = document.getElementById('deposit-btn');
 depositBtn.addEventListener('click', function() {
     const depositAmount = getInputValue('deposit-amount');
-    const depositTotal = document.getElementById('deposit-dollars');
-    depositTotal.innerText = parseFloat(depositTotal.innerText) + parseFloat(depositAmount);
-
+    adding('deposit-dollars', depositAmount);
     //Updating Balance
     const balanceAmount = document.getElementById('balance-dollars');
     balanceAmount.innerText = parseFloat(balanceAmount.innerText) + parseFloat(depositAmount);
@@ -14,9 +12,7 @@ depositBtn.addEventListener('click', function() {
 const withdrawBtn = document.getElementById('withdraw-btn');
 withdrawBtn.addEventListener('click', function() {
     const withdrawAmount = getInputValue('withdraw-amount');
-    const withdrawTotal = document.getElementById('withdraw-dollars');
-    withdrawTotal.innerText = parseFloat(withdrawTotal.innerText) + parseFloat(withdrawAmount);
-
+    adding('withdraw-dollars', withdrawAmount);
     //Updating Balance
     const balanceAmount = document.getElementById('balance-dollars');
     balanceAmount.innerText = parseFloat(balanceAmount.innerText) - parseFloat(withdrawAmount);
@@ -29,5 +25,12 @@ function getInputValue(input) {
     const inputAmount = inputField.value;
     inputField.value = '';
     return inputAmount;
+
+}
+
+//Adding function
+function adding(input1, input2) {
+    const addTotal = document.getElementById(input1);
+    addTotal.innerText = parseFloat(addTotal.innerText) + parseFloat(input2);
 
 }
